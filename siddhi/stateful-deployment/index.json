@@ -1,0 +1,41 @@
+{
+  "title": "Stateful Siddhi App",
+  "description": "Deploy a Stateful Siddhi Application in Kubernetes",
+  "difficulty": "beginner",
+  "time": "10 minutes",
+  "details": {
+    "steps": [
+      {
+        "title": "Preparing the environment",
+        "text": "step1.md"
+      },
+      {
+        "title": "Preparing the Environment",
+        "text": "step2.md"
+      },
+      {
+        "title": "Deploy Stateful Siddhi App",
+        "text": "step3.md"
+      },
+      {
+        "title": "Testing the Siddhi App",
+        "text": "step4.md"
+      }
+    ],
+    "intro": {
+      "text": "intro.md",
+      "credits": "",
+      "code": "courseBase.sh"
+    },
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "environment": {
+    "hideintro": true,
+    "uilayout": "terminal"
+  },
+  "backend": {
+    "imageid": "minikube"
+  }
+}

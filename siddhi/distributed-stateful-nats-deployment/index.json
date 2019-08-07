@@ -1,0 +1,41 @@
+{
+  "title": "Distributed Stateful Siddhi App with NATS",
+  "description": "Deploy a Stateful Siddhi App in Distributed Mode in a Kubernetes Cluster with Preconfigured NATS",
+  "difficulty": "beginner",
+  "time": "15 minutes",
+  "details": {
+    "steps": [
+      {
+        "title": "Preparing the environment",
+        "text": "step1.md"
+      },
+      {
+        "title": "Install the Siddhi operator",
+        "text": "step2.md"
+      },
+      {
+        "title": "Deploy a stateful Siddhi app",
+        "text": "step3.md"
+      },
+      {
+        "title": "Send events to the Siddhi app",
+        "text": "step4.md"
+      }
+    ],
+    "intro": {
+      "text": "intro.md",
+      "credits": "",
+      "code": "courseBase.sh"
+    },
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "environment": {
+    "hideintro": true,
+    "uilayout": "terminal"
+  },
+  "backend": {
+    "imageid": "minikube"
+  }
+}
