@@ -72,7 +72,7 @@ power-consume-app-1   1/1     1            1           5m
 siddhi-operator       1/1     1            1           10m
 ```
 
-**Note that** here Siddhi operator starts a parser deployment for Siddhi apps as `power-consume-app`. It will automatically be removed by the operator. The actual deployments of the Siddhi app are `power-consume-app-0` and `power-consume-app-1`. You have to wait until `power-surge-app-0` and `power-consume-app-1` deployments up and running.
+**Note that** here Siddhi operator starts a parser deployment for Siddhi apps as `power-consume-app-parser`. It will automatically be removed by the operator. The actual deployments of the Siddhi app are `power-consume-app-0` and `power-consume-app-1`. You have to wait until `power-surge-app-0` and `power-consume-app-1` deployments up and running.
 
 
 You can view the `SiddhiProcess` using the following commands.
