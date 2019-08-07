@@ -1,0 +1,11 @@
+{
+  "title": "Siddhi Tutorials",
+  "description": "This course contains series of tutorials about Siddhi",
+  "courses": [
+    {
+      "course_id": "simple-deployment",
+      "title": "Simple Siddhi App",
+      "description": "Deploy simple stateless Siddhi app in a Kubernetes cluster"
+    }
+  ]
+}
