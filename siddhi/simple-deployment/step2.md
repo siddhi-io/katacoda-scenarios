@@ -12,9 +12,9 @@ Minikube uses the minikube IP as the ingress external IP, and since Siddhi opera
 
 Deploy the necessary prerequisite such as  CRD, service accounts, roles, and role bindings using the following command.
 
-`kubectl apply -f https://github.com/BuddhiWathsala/siddhi-operator/releases/download/0.2.0-m2/00-prereqs.yaml`{{execute}}
+`kubectl apply -f https://github.com/siddhi-io/siddhi-operator/releases/download/v0.2.0-m2/00-prereqs.yaml`{{execute}}
 
-`kubectl apply -f https://github.com/BuddhiWathsala/siddhi-operator/releases/download/0.2.0-m2/01-siddhi-operator.yaml`{{execute}}
+`kubectl apply -f https://github.com/siddhi-io/siddhi-operator/releases/download/v0.2.0-m2/01-siddhi-operator.yaml`{{execute}}
 
 ## Validate the Environment
 

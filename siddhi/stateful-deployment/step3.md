@@ -2,7 +2,7 @@ Here we will deploy a stateful Siddhi app that we have discussed in the introduc
 
 A SiddhiProcess YAML to deploy the application can be retrieved as bellow.
 
-`wget https://raw.githubusercontent.com/BuddhiWathsala/siddhi-operator/katacoda-0.2.0-m2/deploy/examples/example-stateful-monolithic-log-app.yaml`{{execute}}
+`wget https://raw.githubusercontent.com/siddhi-io/siddhi-operator/v0.2.0-m2/deploy/examples/example-stateful-monolithic-log-app.yaml`{{execute}}
 
 View the SiddhiProcess YAML as following.
 
