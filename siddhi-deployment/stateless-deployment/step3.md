@@ -2,23 +2,23 @@ This section provides instructions on deploying the stateless Siddhi Apps that w
 
 ### Deploy Siddhi App
 
-Retrieve a prewritten A SiddhiProcess YAML to with the `PowerSurgeDetection` Siddhi App as follows.
+Retrieve a prewritten SiddhiProcess YAML to with earlier discussed `PowerSurgeDetection` Siddhi App using the following command.
 
-`wget https://raw.githubusercontent.com/siddhi-io/katacoda-scenarios/master/siddhi/siddhi-deployment/stateless-deployment/power-surge-app.yaml`{{execute}}
+`wget https://raw.githubusercontent.com/siddhi-io/katacoda-scenarios/master/siddhi-deployment/stateless-deployment/power-surge-app.yaml`{{execute}}
 
 Run the following command to view the SiddhiProcess YAML.
 
 `cat power-surge-app.yaml`{{execute}}
 
-Here the given Siddhi App is parametrized to retrieve the `RECEIVER_URL` from environment variables, and configured to be deployed in the docker image `siddhiio/siddhi-runner-ubuntu:5.1.0-m2`.
+Here the given Siddhi App is parametrized to retrieve the `RECEIVER_URL` from environment variables, and configured to be deployed using the docker image `siddhiio/siddhi-runner-ubuntu:5.1.0-m2`.
 
-Deploy the Siddhi App using the below command.
+Deploy the Siddhi SiddhiProcess using the below command.
 
-`kubectl apply -f example-stateless-log-app.yaml`{{execute}}
+`kubectl apply -f power-surge-app.yaml`{{execute}}
 
-### Validate Siddhi App deployment
+### Validate the deployment
 
-Validate the deployed by running the following.
+Validate the deployment by running the following.
 
 `kubectl get deploy`{{execute}}
 
@@ -46,4 +46,4 @@ NAME              STATUS    READY    AGE
 power-surge-app   Running   1/1      5m
 ```
 
-The next section provides information on testing the Stateless Siddhi App.
+The next section provides information on testing the stateless Siddhi App.
