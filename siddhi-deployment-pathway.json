@@ -4,22 +4,22 @@
   "courses": [
     {
       "course_id": "stateless-deployment",
-      "title": "Deploy stateless Siddhi App",
+      "title": "Stateless Siddhi App",
       "description": "Deploy a stateless Siddhi Application on Kubernetes."
     },
     {
       "course_id": "stateful-deployment",
-      "title": "Deploy stateful Siddhi App",
+      "title": "Stateful Siddhi App",
       "description": "Deploy a stateful Siddhi Application on Kubernetes."
     },
     {
       "course_id": "distributed-stateful-deployment",
-      "title": "Deploy distributed stateful Siddhi App",
+      "title": "Distributed stateful Siddhi App",
       "description": "Deploy a stateful Siddhi Application in distributed mode on Kubernetes while automatically configuring NATS."
     },
     {
       "course_id": "distributed-stateful-nats-deployment",
-      "title": "Deploy distributed stateful Siddhi App with existing NATS",
+      "title": "Distributed stateful Siddhi App with existing NATS",
       "description": "Deploy a stateful Siddhi Application in distributed mode on Kubernetes with preconfigured NATS."
     }
   ]

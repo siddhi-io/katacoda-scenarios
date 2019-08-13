@@ -1,5 +1,5 @@
 {
-  "title": "Stateless Siddhi App Deployment",
+  "title": "Stateless Siddhi App",
   "description": "Deploy stateless Siddhi app in a Kubernetes cluster.",
   "difficulty": "beginner",
   "time": "8 minutes",

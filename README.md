@@ -3,10 +3,10 @@ Interactive Katacoda scenarios for Siddhi Apps and Operator deployment in Kubern
 
 It contains the following deployment scenarios. 
 
-+ Deploy stateless Siddhi App
-+ Deploy stateful Siddhi App 
-+ Deploy distributed stateful Siddhi App 
-+ Deploy distributed Stateful Siddhi App with existing NATS 
++ Stateless Siddhi App
++ Stateful Siddhi App 
++ Distributed stateful Siddhi App 
++ Distributed Stateful Siddhi App with existing NATS 
 
 [Try this in Katacoda.](https://www.katacoda.com/siddhi/courses/siddhi)
 
