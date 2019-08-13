@@ -1,0 +1,34 @@
+apiVersion: siddhi.io/v1alpha2
+kind: SiddhiProcess
+metadata: 
+  name: power-surge-app
+spec: 
+  apps: 
+    - script: |
+        @App:name("PowerSurgeDetection")
+        @App:description("Consumes HTTP messages in JSON format and logs them if the device type is 'dryer' and the power level is greater than or equal to 600W.")
+
+        -- Input Message Format : { 'deviceType': 'dryer', 'power': 6000 }
+
+        @source(
+          type='http',
+          receiver.url='${RECEIVER_URL}',
+          basic.auth.enabled='false',
+          @map(type='json')
+        )
+        define stream DevicePowerStream(deviceType string, power int);
+
+        @sink(type='log', prefix='LOGGER')  
+        define stream PowerSurgeAlertStream(deviceType string, power int); 
+
+        @info(name='surge-detector')  
+        from DevicePowerStream[deviceType == 'dryer' and power >= 600] 
+        select deviceType, power  
+        insert into PowerSurgeAlertStream;
+
+  container: 
+    env: 
+      - 
+        name: RECEIVER_URL
+        value: "http://0.0.0.0:8080/checkPower"
+    image: "siddhiio/siddhi-runner-ubuntu:5.1.0-m2"

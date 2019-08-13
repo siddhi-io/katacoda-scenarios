@@ -1,6 +1,6 @@
 {
-  "title": "Simple Siddhi App",
-  "description": "Deploy simple stateless Siddhi app in a Kubernetes cluster",
+  "title": "Stateless Siddhi App Deployment",
+  "description": "Deploy stateless Siddhi app in a Kubernetes cluster.",
   "difficulty": "beginner",
   "time": "8 minutes",
   "details": {
@@ -14,7 +14,7 @@
         "text": "step2.md"
       },
       {
-        "title": "Deploy Stateful Siddhi App",
+        "title": "Deploy Stateless Siddhi App",
         "text": "step3.md"
       },
       {
