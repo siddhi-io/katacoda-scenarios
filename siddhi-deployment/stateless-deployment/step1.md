@@ -24,13 +24,13 @@ select deviceType, power
 insert into PowerSurgeAlertStream;
 ```
 
-The above app consumes `HTTP` events as a `JSON` messages in format `{ 'deviceType': 'dryer', 'power': 6000 }`, and inserts them into `DevicePowerStream`. From which, using the query `surge-detector`, it filters the events having device type `dryer` and the power consumption amount greater than or equals to `600W`. It inserts the filtered events into the `PowerSurgeAlertStream`, which simply logs the them on the console.
+The above app consumes consumes `JSON` messages via http sink in the format `{ 'deviceType': 'dryer', 'power': 6000 }`, and inserts them into `DevicePowerStream`. From which using `surge-detector` query, it filters the events having device type `dryer` and the power consumption amount greater than or equals to `600`W and inserts the filtered events into the `PowerSurgeAlertStream` steam. The `PowerSurgeAlertStream` then logs them on the console using a log sink.
 
 This app is stateless as it only has an HTTP source to consume events, and filter query, and a log sink.
 
 **Prerequisites for deploying the app**
 
-- Ingress - As the app consume events via HTTP and Siddhi uses NGINX ingress controller to receive HTTP/HTTPS requests.
+- Ingress - As the App consumes events via HTTP, and Siddhi uses NGINX ingress controller to receive HTTP/HTTPS requests.
 - Siddhi Operator - For deploying and managing Siddhi Apps in Kubernetes.
 
-The next section provides instructions on installing prerequisites.
+The next section provides instructions on installing the prerequisites.

@@ -1,26 +1,26 @@
 {
   "title": "Siddhi Deployment Tutorials",
-  "description": "This course contains series of tutorials about deploying Siddhi in Kubernetes",
+  "description": "This course contains series of tutorials about deploying Siddhi on Kubernetes",
   "courses": [
     {
       "course_id": "stateless-deployment",
-      "title": "Stateless Siddhi App Deployment",
-      "description": "Deploy stateless Siddhi app in a Kubernetes cluster."
+      "title": "Deploy stateless Siddhi App",
+      "description": "Deploy a stateless Siddhi Application on Kubernetes."
     },
     {
       "course_id": "stateful-deployment",
-      "title": "Stateful Siddhi App Deployment",
-      "description": "Deploy a Stateful Siddhi Application in Kubernetes."
+      "title": "Deploy stateful Siddhi App",
+      "description": "Deploy a stateful Siddhi Application on Kubernetes."
     },
     {
       "course_id": "distributed-stateful-deployment",
-      "title": "Distributed Stateful Siddhi App Deployment",
-      "description": "Deploy a Stateful Siddhi App in Distributed Mode in a Kubernetes Cluster while automatically configuring NATS."
+      "title": "Deploy distributed stateful Siddhi App",
+      "description": "Deploy a stateful Siddhi Application in distributed mode on Kubernetes while automatically configuring NATS."
     },
     {
       "course_id": "distributed-stateful-nats-deployment",
-      "title": "Distributed Stateful Siddhi App Deployment external NATS",
-      "description": "Deploy a Stateful Siddhi App in Distributed Mode in a Kubernetes Cluster with Preconfigured NATS."
+      "title": "Deploy distributed stateful Siddhi App with existing NATS",
+      "description": "Deploy a stateful Siddhi Application in distributed mode on Kubernetes with preconfigured NATS."
     }
   ]
 }

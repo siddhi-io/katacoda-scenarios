@@ -1,6 +1,6 @@
 Here we will deploy a stateful Siddhi app that we have discussed in the introduction section.
 
-A SiddhiProcess YAML to deploy the application can be retrieved as bellow.
+A SiddhiProcess YAML to deploy the application can be retrieved as below.
 
 `wget https://raw.githubusercontent.com/siddhi-io/siddhi-operator/v0.2.0-m2/deploy/examples/example-stateful-distributed-log-app.yaml`{{execute}}
 
