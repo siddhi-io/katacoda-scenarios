@@ -1,1 +1,1 @@
-You've completed your simple Siddhi app deployment successfully!
+**Congratulations on successfully completing the stateless Siddhi App deployment scenario!**

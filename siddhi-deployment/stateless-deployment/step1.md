@@ -1,6 +1,6 @@
 [Siddhi](http://siddhi.io) is a cloud-native, scalable, Streaming and Complex Event Processing System capable of building real-time analytics, data integration, notification and surveillance usecases.
 
-In this scenario presents how to deploy a stateless Siddhi Application in Kubernetes that receives HTTP requests and logs them. This use case is implemented using the `PowerSurgeDetection` app presented below.
+In this scenario presents how to deploy a stateless Siddhi Application on Kubernetes that receives HTTP requests and logs them. This use case is implemented using the `PowerSurgeDetection` app presented below.
 
 ```programming
 @App:name("PowerSurgeDetection")
@@ -31,6 +31,6 @@ This app is stateless as it only has an HTTP source to consume events, and filte
 **Prerequisites for deploying the app**
 
 - Ingress - As the App consumes events via HTTP, and Siddhi uses NGINX ingress controller to receive HTTP/HTTPS requests.
-- Siddhi Operator - For deploying and managing Siddhi Apps in Kubernetes.
+- Siddhi Operator - For deploying and managing Siddhi Apps on Kubernetes.
 
 The next section provides instructions on installing the prerequisites.

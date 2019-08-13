@@ -1,57 +1,30 @@
-Here we will deploy a stateful Siddhi app that we have discussed in the introduction section.
+This section provides instructions on deploying the stateful Siddhi App that was discussed in the Introduction section.
 
-A SiddhiProcess YAML to deploy the application can be retrieved as below.
+### Deploy Siddhi App
 
-`wget https://raw.githubusercontent.com/siddhi-io/siddhi-operator/v0.2.0-m2/deploy/examples/example-stateful-monolithic-log-app.yaml`{{execute}}
+Retrieve a prewritten SiddhiProcess YAML to with earlier discussed `PowerConsumptionSurgeDetection` Siddhi App using the following command.
 
-View the SiddhiProcess YAML as following.
+`wget https://raw.githubusercontent.com/siddhi-io/katacoda-scenarios/master/siddhi-deployment/stateful-deployment/power-consume-app.yaml`{{execute}}
 
-`cat example-stateful-monolithic-log-app.yaml`{{execute}}
+Run the following command to view the SiddhiProcess YAML.
 
-This Siddhi application uses an HTTP source like below to receive events.
+`cat power-consume-app.yaml`{{execute}}
 
-```programming
-@source(
-    type='http',
-    receiver.url='${RECEIVER_URL}',
-    basic.auth.enabled='false',
-    @map(type='json')
-)
-define stream DevicePowerStream(deviceType string, power int);
-```
+Here the given Siddhi App is parametrized to retrieve the `RECEIVER_URL` from environment variables, and configured to be deployed using the docker image `siddhiio/siddhi-runner-ubuntu:5.1.0-m2`. 
 
-And print events using the log sink.
+Further to persist the periodic states produced by Siddhi, a persistent volume claim is configured in the `persistent volume` section, and the relevant persistent configuration of Siddhi runner is provided under the `runner` section.
 
-```programming
-@sink(type='log', prefix='LOGGER') 
-define stream PowerSurgeAlertStream(deviceType string, powerConsumed long);
-```
+Deploy the Siddhi SiddhiProcess using the below command.
 
-The execution logic of the Siddhi app defined by the following query.
+`kubectl apply -f power-consume-app.yaml`{{execute}}
 
-```programming
-@info(name='surge-detector')
-from DevicePowerStream#window.time(1 min)
-select deviceType, sum(power) as powerConsumed
-group by deviceType
-having powerConsumed > 10000
-output every 30 sec
-insert into PowerSurgeAlertStream;
-```
+### Validate the deployment
 
-Above query executes the following tasks.
-1. Retains events arrived in last 1 minute period
-1. Group all the events by the electronic device type and calculate the total power consumption
-1. Select all the devices which exceed 1000W power consumption
-1. Output aggregated events once in each 30 seconds
-
-Now you can deploy the Stateful Siddhi App.
-
-`kubectl apply -f example-stateful-monolithic-log-app.yaml`{{execute}}
-
-Validate the app is deployed correctly by running.
+Validate the deployment by running the following.
 
 `kubectl get deploy`{{execute}}
+
+Results similar to the following will be generated, make sure the `power-consume-app-0` is up and running. 
 
 ```sh
 $ kubectl get deploy
@@ -60,10 +33,13 @@ power-consume-app-0   1/1     1            1           2m
 siddhi-operator       1/1     1            1           5m
 ```
 
-**Note that** here Siddhi operator starts a parser deployment for Siddhi apps as `power-surge-app-parser`. It will automatically be removed by the operator. The actual deployment of the Siddhi app starts as `power-surge-app-0`. You have to wait until `power-surge-app-0` deployment up and running.
+**Note:** The Siddhi operator parses and validates the Siddhi Apps before deploying them. This is done by temporarily deploying a parser with the SiddhiProcess name such as `power-consume-app-parser`, and removing it after parsing.
 
+The status of the `SiddhiProcess` can be viewed using the following commands.
 
-You can view the `SiddhiProcess` using the following commands.
+`kubectl get siddhi`{{execute}}
+
+This generate results similar to the following. 
 
 `kubectl get sp`{{execute}}
 
@@ -73,4 +49,6 @@ $ kubectl get sp
 NAME                STATUS    READY     AGE
 power-consume-app   Running   1/1       2m
 ```
+
+The next section provides information on testing the stateful Siddhi App.
 

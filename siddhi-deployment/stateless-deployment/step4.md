@@ -24,7 +24,7 @@ Following command can be used to view the logs from `power-surge-app-0` pod.
 
 `kubectl logs $(kubectl get pods | awk '{ print $1 }' | grep ^power-surge-app-0) | tail -n 10`{{execute}}
 
-The logged events will be present in the logs similar to the following.
+The processed events will be logged similar to the following log segment.
 
 ```
 ...

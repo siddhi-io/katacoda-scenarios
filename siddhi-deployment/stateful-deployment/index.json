@@ -1,12 +1,12 @@
 {
   "title": "Stateful Siddhi App",
-  "description": "Deploy a Stateful Siddhi Application in Kubernetes",
+  "description": "Deploy a stateful Siddhi Application on Kubernetes.",
   "difficulty": "beginner",
   "time": "10 minutes",
   "details": {
     "steps": [
       {
-        "title": "Preparing the environment",
+        "title": "Introduction",
         "text": "step1.md"
       },
       {
@@ -14,7 +14,7 @@
         "text": "step2.md"
       },
       {
-        "title": "Deploy Stateful Siddhi App",
+        "title": "Deploying stateful Siddhi App",
         "text": "step3.md"
       },
       {
