@@ -1,4 +1,4 @@
-This section provides instructions on deploying the stateless Siddhi Apps that was discussed in the Introduction section.
+This section provides instructions on deploying the stateless Siddhi App that was discussed in the Introduction section.
 
 ### Deploy Siddhi App
 

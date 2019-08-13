@@ -1,1 +1,1 @@
-Welcome to your stateful Siddhi app deployment scenario!
+Welcome to the stateful Siddhi App deployment scenario!

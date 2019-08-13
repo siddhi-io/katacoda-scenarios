@@ -1,4 +1,4 @@
-This section provides instructions on installing prerequisites that are needed for stateless Siddhi Apps to run.
+This section provides instructions on installing prerequisites that are needed for the stateless Siddhi App to run.
 
 ### Enabling NGINX ingress
 
