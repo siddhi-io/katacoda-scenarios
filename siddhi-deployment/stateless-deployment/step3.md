@@ -2,7 +2,7 @@ This section provides instructions on deploying the stateless Siddhi App that wa
 
 ### Deploy Siddhi App
 
-Retrieve a prewritten SiddhiProcess YAML to with earlier discussed `PowerSurgeDetection` Siddhi App using the following command.
+Retrieve a prewritten SiddhiProcess YAML, with the earlier discussed `PowerSurgeDetection` Siddhi App, using the following command.
 
 `wget https://raw.githubusercontent.com/siddhi-io/katacoda-scenarios/master/siddhi-deployment/stateless-deployment/power-surge-app.yaml`{{execute}}
 
@@ -18,7 +18,7 @@ Deploy the Siddhi SiddhiProcess using the below command.
 
 ### Validate the deployment
 
-Validate the deployment by running the following.
+Validate the deployment by running the following command.
 
 `kubectl get deploy`{{execute}}
 
@@ -31,13 +31,13 @@ power-surge-app-0   1/1     1            1           2m
 siddhi-operator     1/1     1            1           5m
 ```
 
-**Note:** The Siddhi operator parses and validates the Siddhi Apps before deploying them. This is done by temporarily deploying a parser with the SiddhiProcess name such as `power-surge-app-parser`, and removing it after parsing.
+**Note:** The Siddhi operator parses and validates Siddhi Apps before deploying them. This is done by temporarily deploying a parser with the SiddhiProcess name such as `power-surge-app-parser`, and removing it after parsing.
 
 The status of the `SiddhiProcess` can be viewed using the following commands.
 
 `kubectl get siddhi`{{execute}}
 
-This generate results similar to the following. 
+The generate results will be similar to the following. 
 
 ```sh
 $ kubectl get siddhi

@@ -1,4 +1,4 @@
-This section provides instructions on installing prerequisites that are needed for the stateful Siddhi App to run.
+This section provides instructions to install the prerequisites needed for the stateful Siddhi App to run.
 
 ### Enabling NGINX ingress
 
@@ -15,7 +15,7 @@ Therefore to allow Siddhi to consume events from outside, add an entry in the `/
 
 ## Setup Persistence Volume
 
-Stateful Siddhi Apps need Kubernetes persistence volume to preserve their state. A sample persistence volume specification for Minikube can be download as following.
+Stateful Siddhi Apps need Kubernetes persistence volume to preserve their state. A sample persistence volume specification for Minikube can be download as follows.
 
 `wget https://raw.githubusercontent.com/siddhi-io/siddhi-operator/v0.2.0-m2/deploy/examples/example-pv.yaml`{{execute}}
 
@@ -23,25 +23,25 @@ Run the following command to view the persistence volume YAML file.
 
 `cat example-pv.yaml`{{execute}}
 
-Now, deploy the persistence volume using the following command.
+Deploy the persistence volume using the following command.
 
 `kubectl apply -f example-pv.yaml`{{execute}}
 
-Siddhi-runner docker image runs by a user called `siddhi_user` belonging to the user group `siddhi_io`. Therefore, the ownership of the  `/home/siddhi_user/` directory that is mounted via the persistence volume, should be given to the `siddhi_user` user of `siddhi_io` user group.
+Siddhi-runner docker image executes under the user `siddhi_user` belonging to the user group `siddhi_io`. Therefore, the ownership of the `/home/siddhi_user/` directory, mounted via the persistence volume, should be given to the user `siddhi_user` of user group `siddhi_io`.
 
-Create the user `siddhi_user` and the user group `siddhi_io` using the following commands.
+First, create a user group `siddhi_io` and add a user `siddhi_user` to it by executing the following commands.
 
 `sudo /usr/sbin/addgroup --system -gid 802 siddhi_io`{{execute}}
 
 `sudo /usr/sbin/adduser --system -gid 802 -uid 802 siddhi_user`{{execute}}
 
-Then change the ownership of the directory to `siddhi_user` using the following command.
+Now, change the ownership of the directory to `siddhi_user` using the following command.
 
 `sudo chown siddhi_user:siddhi_io /home/siddhi_user/`{{execute}}
 
 ### Install Siddhi operator
 
-Deploy the necessary prerequisite such as CRD, service accounts, roles, and role bindings using the following command.
+Deploy the necessary Siddhi operator prerequisite such as CRD, service accounts, roles, and role bindings using the following command.
 
 `kubectl apply -f https://github.com/siddhi-io/siddhi-operator/releases/download/v0.2.0-m2/00-prereqs.yaml`{{execute}}
 
@@ -51,7 +51,7 @@ Now deploy Siddhi operator using the below command.
 
 ### Validate the environment
 
-To ensure that all necessary pods and persistence volume in the cluster are available, run the following commands.
+To ensure that all necessary pods and persistence volume are available in the cluster, execute the following commands.
 
 `kubectl get pods`{{execute}}
 

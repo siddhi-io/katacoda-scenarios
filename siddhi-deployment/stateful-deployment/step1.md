@@ -1,11 +1,12 @@
 [Siddhi](http://siddhi.io) is a cloud-native, scalable, Streaming and Complex Event Processing System capable of building real-time analytics, data integration, notification and surveillance usecases.
 
-In this scenario presents how to deploy a a non-distributed stateful Siddhi Application on Kubernetes. This use case is implemented using the `PowerConsumptionSurgeDetection` app presented below.
+This scenario presents how to deploy a non-distributed stateful Siddhi Application on Kubernetes. 
 
-```programming
+This use case is implemented using the `PowerConsumptionSurgeDetection` app presented below.
+
+```sql
 @App:name("PowerConsumptionSurgeDetection")
-
-@App:description("Consumes power consumption events from HTTP on JSON format, and alerts by logging a message once every 30 seconds, if the power consumption in the last 1 minute is greater than or equal to 10000W.")
+@App:description("Consumes HTTP messages in JSON format, and alerts by logging a message once every 30 seconds, if the total power consumption in the last 1 minute is greater than or equal to 10000W.")
 
 @source( type='http', 
          receiver.url='${RECEIVER_URL}',
@@ -27,14 +28,16 @@ output every 30 sec
 insert into PowerSurgeAlertStream;
 ```
 
-The above app consumes consumes `JSON` messages via http sink in the format `{ 'deviceType': 'dryer', 'power': 6000 }`, and inserts them into `DevicePowerStream`. From which using `surge-detector` query, it generates events once every 30 seconds and inserts into the `PowerSurgeAlertStream` if the total power consumption in the last 1 minute is greater than or equal to 10000W. The `PowerSurgeAlertStream` then logs them on the console using a log sink.
+The above app consumes `JSON` messages via http sink in the format `{ 'deviceType': 'dryer', 'power': 6000 }`, and inserts them into `DevicePowerStream` stream. From which the `surge-detector` query calculates the total power consumed in the last 1 minute, and if the total value is greater than or equal to `10000`W, it generates an event once every 30 seconds, and inserts into the `PowerSurgeAlertStream` stream. The `PowerSurgeAlertStream` then logs them on the console using a log sink.
 
 This app is stateful as it has a window of 1 minute and it needs to preserve the running sum of power consumption during failures and restarts.
+
+For more information in developing Siddhi Apps, refer the [Siddhi Documentation](http://siddhi.io/redirect/docs).
 
 **Prerequisites for deploying the app**
 
 - Ingress - As the App consumes events via HTTP, and Siddhi uses NGINX ingress controller to receive HTTP/HTTPS requests.
-- Persistence Volume - To preserve the periodic state snapshots of Siddhi 
+- Persistence Volume - To preserve the periodic state snapshots of Siddhi. 
 - Siddhi Operator - For deploying and managing Siddhi Apps on Kubernetes.
 
 The next section provides instructions on installing the prerequisites.

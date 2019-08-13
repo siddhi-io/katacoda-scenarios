@@ -20,7 +20,7 @@ The deployed Siddhi App will log the messages if the device type is `dryer` and 
 
 ### Viewing Logs 
 
-Following command can be used to view the logs from `power-surge-app-0` pod. 
+Following command can be used to view the logs from pod `power-surge-app-0`. 
 
 `kubectl logs $(kubectl get pods | awk '{ print $1 }' | grep ^power-surge-app-0) | tail -n 10`{{execute}}
 

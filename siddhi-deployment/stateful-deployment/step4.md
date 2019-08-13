@@ -20,7 +20,7 @@ The deployed Siddhi App will log the messages once every 30 seconds if the total
 
 ### Viewing Logs 
 
-Following command can be used to view the logs from `power-consume-app-0` pod. 
+Following command can be used to view the logs from pod `power-consume-app-0`. 
 
 `kubectl logs $(kubectl get pods | awk '{ print $1 }' | grep ^power-consume-app-0) | tail -n 10`{{execute}}
 

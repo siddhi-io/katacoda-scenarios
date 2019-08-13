@@ -6,7 +6,7 @@ spec:
   apps: 
     - script: |
         @App:name("PowerConsumptionSurgeDetection")
-        @App:description("Consumes power consumption events from HTTP on JSON format, and alerts by logging a message once every 30 seconds, if the power consumption in the last 1 minute is greater than or equal to 10000W.")
+        @App:description("Consumes HTTP messages in JSON format, and alerts by logging a message once every 30 seconds, if the total power consumption in the last 1 minute is greater than or equal to 10000W.")
 
         -- Input Message Format : { 'deviceType': 'dryer', 'power': 6000 }
 
@@ -48,7 +48,7 @@ spec:
   runner: |
     state.persistence:
       enabled: true
-      intervalInMin: 1
+      intervalInMin: 5
       revisionsToKeep: 2
       persistenceStore: io.siddhi.distribution.core.persistence.FileSystemPersistenceStore
       config:

@@ -1,8 +1,10 @@
 [Siddhi](http://siddhi.io) is a cloud-native, scalable, Streaming and Complex Event Processing System capable of building real-time analytics, data integration, notification and surveillance usecases.
 
-In this scenario presents how to deploy a stateless Siddhi Application on Kubernetes that receives HTTP requests and logs them. This use case is implemented using the `PowerSurgeDetection` app presented below.
+This scenario presents how to deploy a stateless Siddhi Application on Kubernetes that receives HTTP requests and logs them. 
 
-```programming
+This use case is implemented using the `PowerSurgeDetection` app presented below.
+
+```sql
 @App:name("PowerSurgeDetection")
 @App:description("Consumes HTTP messages in JSON format and logs them if the device type is 'dryer' and the power level is greater than or equal to 600W.")
 
@@ -24,9 +26,11 @@ select deviceType, power
 insert into PowerSurgeAlertStream;
 ```
 
-The above app consumes consumes `JSON` messages via http sink in the format `{ 'deviceType': 'dryer', 'power': 6000 }`, and inserts them into `DevicePowerStream`. From which using `surge-detector` query, it filters the events having device type `dryer` and the power consumption amount greater than or equals to `600`W and inserts the filtered events into the `PowerSurgeAlertStream` steam. The `PowerSurgeAlertStream` then logs them on the console using a log sink.
+The above app consumes `JSON` messages via http sink in the format `{ 'deviceType': 'dryer', 'power': 6000 }`, and inserts them into `DevicePowerStream` stream. From which the `surge-detector` query filters the events having device type `dryer` and the power consumption amount greater than or equals to `600`W, and inserts the filtered events into the `PowerSurgeAlertStream` stream. The `PowerSurgeAlertStream` stream then logs them on the console using a log sink.
 
 This app is stateless as it only has an HTTP source to consume events, and filter query, and a log sink.
+
+For more information in developing Siddhi Apps, refer the [Siddhi Documentation](http://siddhi.io/redirect/docs).
 
 **Prerequisites for deploying the app**
 

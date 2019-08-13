@@ -1,4 +1,4 @@
-This section provides instructions on installing prerequisites that are needed for the stateless Siddhi App to run.
+This section provides instructions to install the prerequisites needed for the stateless Siddhi App to run.
 
 ### Enabling NGINX ingress
 
@@ -15,7 +15,7 @@ Therefore to allow Siddhi to consume events from outside, add an entry in the `/
 
 ### Install Siddhi operator
 
-Deploy the necessary prerequisite such as CRD, service accounts, roles, and role bindings using the following command.
+Deploy the necessary Siddhi operator prerequisite such as CRD, service accounts, roles, and role bindings using the following command.
 
 `kubectl apply -f https://github.com/siddhi-io/siddhi-operator/releases/download/v0.2.0-m2/00-prereqs.yaml`{{execute}}
 
@@ -25,7 +25,7 @@ Now deploy Siddhi operator using the below command.
 
 ### Validate the environment
 
-To ensure that all necessary pods in the cluster are up and running, run the following command.
+To ensure that all necessary pods are up and running in the cluster, run the following command.
 
 `kubectl get pods`{{execute}}
 
