@@ -1,6 +1,6 @@
 {
   "title": "Distributed Stateful Siddhi App",
-  "description": "Deploy a Stateful Siddhi App in Distributed Mode in a Kubernetes Cluster",
+  "description": "Deploy a stateful Siddhi Application in distributed mode on Kubernetes with automatic configuration of NATS.",
   "difficulty": "beginner",
   "time": "15 minutes",
   "details": {
@@ -14,7 +14,7 @@
         "text": "step2.md"
       },
       {
-        "title": "Deploy Stateful Siddhi App",
+        "title": "Deploying stateful Siddhi App",
         "text": "step3.md"
       },
       {

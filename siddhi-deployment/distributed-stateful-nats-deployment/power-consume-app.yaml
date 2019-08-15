@@ -36,6 +36,13 @@ spec:
         value: "http://0.0.0.0:8080/checkPower"
     image: "siddhiio/siddhi-runner-ubuntu:5.1.0-m2"
   
+  messagingSystem:
+    type: nats
+    config: 
+      bootstrapServers: 
+        - "nats://nats-siddhi:4222"
+      clusterId: stan-siddhi
+  
   persistentVolume: 
     accessModes: 
       - ReadWriteOnce
@@ -48,7 +55,7 @@ spec:
   runner: |
     state.persistence:
       enabled: true
-      intervalInMin: 5
+      intervalInMin: 1
       revisionsToKeep: 2
       persistenceStore: io.siddhi.distribution.core.persistence.FileSystemPersistenceStore
       config:

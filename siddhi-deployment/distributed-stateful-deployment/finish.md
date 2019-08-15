@@ -1,1 +1,1 @@
-You've completed your stateful Siddhi app deployment in distributed mode successfully!
+**Congratulations on successfully completing the distributed stateful Siddhi App deployment scenario!**

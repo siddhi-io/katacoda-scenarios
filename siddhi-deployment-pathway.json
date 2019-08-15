@@ -15,7 +15,7 @@
     {
       "course_id": "distributed-stateful-deployment",
       "title": "Distributed stateful Siddhi App",
-      "description": "Deploy a stateful Siddhi Application in distributed mode on Kubernetes while automatically configuring NATS."
+      "description": "Deploy a stateful Siddhi Application in distributed mode on Kubernetes with automatic configuration of NATS."
     },
     {
       "course_id": "distributed-stateful-nats-deployment",
