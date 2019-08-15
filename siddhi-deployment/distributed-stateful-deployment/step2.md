@@ -2,22 +2,22 @@ This section provides instructions to install the prerequisites needed for the d
 
 ### Enable NGINX ingress
 
-Siddhi operator by default uses NGINX ingress controller to receive HTTP/HTTPS requests. 
+Siddhi Operator by default uses NGINX ingress controller to receive HTTP/HTTPS requests. 
 Hence to [enable ingress](https://kubernetes.github.io/ingress-nginx/deploy/) in Minikube Kubernetes cluster run the following command.
 
 `minikube addons enable ingress`{{execute}}
 
-Minikube uses the minikube IP as the external IP of the ingress, and the Siddhi operator uses hostname called `siddhi` to receive external traffic. 
+Minikube uses the minikube IP as the external IP of the ingress, and the Siddhi Operator uses hostname called `siddhi` to receive external traffic. 
 
 Therefore to allow Siddhi to consume events from outside, add an entry in the `/etc/hosts` file mapping the minikube IP to `siddhi` host by running the following command.
 
 ``` echo " `minikube ip` siddhi" >> /etc/hosts ```{{execute}}
 
-### Deploy NATS and NATS Streaming
+### Install NATS and NATS Streaming Operators
 
-In the distributed mode, as the Siddhi operator splits the Siddhi Apps into partial apps, it uses NATS and NATS Streaming systems for the apps to communicate with each other. 
+In the distributed mode, as the Siddhi Operator splits the Siddhi Apps into partial apps, it uses NATS and NATS Streaming systems to communicate with each other. 
 
-Use the following commands to install the NATS and NATS streaming systems.
+Use the following commands to install the NATS and NATS Streaming systems.
 
 `kubectl apply -f https://github.com/nats-io/nats-operator/releases/download/v0.5.0/00-prereqs.yaml`{{execute}}
 
@@ -53,13 +53,13 @@ Now, change the ownership of the directory to `siddhi_user` using the following 
 
 `sudo chown siddhi_user:siddhi_io /home/siddhi_user/`{{execute}}
 
-### Install Siddhi operator
+### Install Siddhi Operator
 
-Deploy the necessary Siddhi operator prerequisite such as CRD, service accounts, roles, and role bindings using the following command.
+Deploy the necessary Siddhi Operator prerequisite such as CRD, service accounts, roles, and role bindings using the following command.
 
 `kubectl apply -f https://github.com/siddhi-io/siddhi-operator/releases/download/v0.2.0-m2/00-prereqs.yaml`{{execute}}
 
-Now deploy Siddhi operator using the below command.
+Now deploy Siddhi Operator using the below command.
 
 `kubectl apply -f https://github.com/siddhi-io/siddhi-operator/releases/download/v0.2.0-m2/01-siddhi-operator.yaml`{{execute}}
 
@@ -71,7 +71,7 @@ To ensure that all necessary pods and persistence volume are available in the cl
 
 `kubectl get pv`{{execute}}
 
-Results similar to the following will be generated, make sure the Siddhi, NATS and NATS Streaming operators are up and running, and the created persistence volume is available. 
+Results similar to the following will be generated, make sure the Siddhi, NATS and NATS Streaming Operators are up and running, and the created persistence volume is available. 
 
 ```sh
 $ kubectl get pods

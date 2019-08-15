@@ -33,7 +33,7 @@ power-consume-app-0   1/1     1            1           2m
 siddhi-operator       1/1     1            1           5m
 ```
 
-**Note:** The Siddhi operator parses and validates Siddhi Apps before deploying them. This is done by temporarily deploying a parser with the SiddhiProcess name such as `power-consume-app-parser`, and removing it after parsing.
+**Note:** The Siddhi Operator parses and validates Siddhi Apps before deploying them. This is done by temporarily deploying a parser with the SiddhiProcess name such as `power-consume-app-parser`, and removing it after parsing.
 
 The status of the `SiddhiProcess` can be viewed using the following commands.
 

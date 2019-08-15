@@ -38,7 +38,7 @@ power-consume-app-1   1/1     1            1           5m
 siddhi-operator       1/1     1            1           10m
 ```
 
-**Note:** The Siddhi operator parses and validates Siddhi Apps before deploying them. This is done by temporarily deploying a parser with the SiddhiProcess name such as `power-consume-app-parser`, and removing it after parsing.
+**Note:** The Siddhi Operator parses and validates Siddhi Apps before deploying them. This is done by temporarily deploying a parser with the SiddhiProcess name such as `power-consume-app-parser`, and removing it after parsing.
 
 The status of the `SiddhiProcess` can be viewed using the following commands.
 
@@ -46,10 +46,8 @@ The status of the `SiddhiProcess` can be viewed using the following commands.
 
 The generate results will be similar to the following. 
 
-`kubectl get sp`{{execute}}
-
 ```sh
-$ kubectl get sp
+$ kubectl get siddhi
 
 NAME                STATUS    READY     AGE
 power-consume-app   Running   2/2       5m

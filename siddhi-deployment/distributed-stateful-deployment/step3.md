@@ -14,7 +14,7 @@ Here the given Siddhi App is parametrized to retrieve the `RECEIVER_URL` from en
 
 As the App is stateful, to persist the periodic states, a persistent volume claim is configured under the `persistentVolume` section, and the relevant persistent configuration of the Siddhi runner is provided under the `runner` section.
 
-Further, since the App is being deployed in a distributed mode, `NATS` is configured under the `messagingSystem` section. Here the Siddhi operator will automatically create the necessary NATS and  NATS Streaming clusters to wire the partial Siddhi Apps.
+Further, since the App is being deployed in a distributed mode, `NATS` is configured under the `messagingSystem` section. Here the Siddhi Operator will automatically create the necessary NATS and  NATS Streaming clusters to wire the partial Siddhi Apps.
 
 Deploy the Siddhi SiddhiProcess using the below command.
 
@@ -38,7 +38,7 @@ power-consume-app-1   1/1     1            1           5m
 siddhi-operator       1/1     1            1           10m
 ```
 
-**Note:** The Siddhi operator parses and validates Siddhi Apps before deploying them. This is done by temporarily deploying a parser with the SiddhiProcess name such as `power-consume-app-parser`, and removing it after parsing.
+**Note:** The Siddhi Operator parses and validates Siddhi Apps before deploying them. This is done by temporarily deploying a parser with the SiddhiProcess name such as `power-consume-app-parser`, and removing it after parsing.
 
 The status of the `SiddhiProcess` can be viewed using the following commands.
 

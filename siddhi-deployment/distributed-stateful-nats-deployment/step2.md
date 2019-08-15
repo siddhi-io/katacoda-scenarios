@@ -2,22 +2,22 @@ This section provides instructions to install the prerequisites needed for the d
 
 ### Enable NGINX ingress
 
-Siddhi operator by default uses NGINX ingress controller to receive HTTP/HTTPS requests. 
+Siddhi Operator by default uses NGINX ingress controller to receive HTTP/HTTPS requests. 
 Hence to [enable ingress](https://kubernetes.github.io/ingress-nginx/deploy/) in Minikube Kubernetes cluster run the following command.
 
 `minikube addons enable ingress`{{execute}}
 
-Minikube uses the minikube IP as the external IP of the ingress, and the Siddhi operator uses hostname called `siddhi` to receive external traffic. 
+Minikube uses the minikube IP as the external IP of the ingress, and the Siddhi Operator uses hostname called `siddhi` to receive external traffic. 
 
 Therefore to allow Siddhi to consume events from outside, add an entry in the `/etc/hosts` file mapping the minikube IP to `siddhi` host by running the following command.
 
 ``` echo " `minikube ip` siddhi" >> /etc/hosts ```{{execute}}
 
-### Deploy and Create NATS and NATS Streaming
+### Install NATS and NATS Streaming Operators
 
-In the distributed mode, as the Siddhi operator splits the Siddhi Apps into partial apps, it uses NATS and NATS Streaming systems for the apps to communicate with each other. 
+In the distributed mode, as the Siddhi Operator splits the Siddhi Apps into partial apps, it uses NATS and NATS Streaming systems to communicate with each other. 
 
-Use the following commands to install the NATS and NATS streaming systems.
+Use the following commands to install the NATS and NATS Streaming systems.
 
 `kubectl apply -f https://github.com/nats-io/nats-operator/releases/download/v0.5.0/00-prereqs.yaml`{{execute}}
 
@@ -27,7 +27,9 @@ Use the following commands to install the NATS and NATS streaming systems.
 
 `kubectl apply -f https://github.com/nats-io/nats-streaming-operator/releases/download/v0.2.2/deployment.yaml`{{execute}}
 
-For this scenario, a single node NATS and NATS Streaming cluster will be used.  
+### Create NATS Cluster
+
+For this scenario, a single node NATS cluster will be used.  
  
 Download the YAML to create a NATS cluster as follows.
 
@@ -37,13 +39,17 @@ The NATS Cluster configurations can be viewed using the below command.
 
 `cat example-nats-cluster.yaml`{{execute}}
 
-Here the `NatsCluster` is configured to run on a single pod with the name `nats-siddhi`. 
+Here the `NatsCluster` is configured to run on a single pod with the name `nats-siddhi`. Here, the name is prefixed with `nats` following NATS default naming convention.
 
 Deploy the NATS cluster by running the following command.
 
 `kubectl apply -f example-nats-cluster.yaml`{{execute}}
 
-Similar to NATS, download the YAML to create a NATS Streaming cluster with the below command.
+### Create NATS Streaming Cluster
+
+Similar to NATS, a single node NATS Streaming cluster will be used for this scenario.
+
+Download the YAML to create a NATS Streaming cluster with the below command.
 
 `wget https://raw.githubusercontent.com/siddhi-io/siddhi-operator/v0.2.0-m2/deploy/examples/example-stan-cluster.yaml`{{execute}}
 
@@ -51,13 +57,11 @@ The NATS Streaming cluster configurations can be viewed using the below command.
 
 `cat example-stan-cluster.yaml`{{execute}}
 
-Here the `NatsStreamingCluster` is configured to run on a single pod with the name `stan-siddhi`. 
+Here the `NatsStreamingCluster` is configured to run on a single pod with the name `stan-siddhi`. Here, the name is prefixed with `stan` following NATS default naming convention.
 
 Deploy the NATS Streaming cluster by running the following command.
 
 `kubectl apply -f example-stan-cluster.yaml`{{execute}}
-
-The deployed NATS Streaming cluster will connect to the NATS cluster for preserving the inflight messages. Here, NATS and NATS Streaming clusters are respectively named with prefixes `nats` and `stan` following their default naming convention.
 
 ### Setup Persistence Volume
 
@@ -85,13 +89,13 @@ Now, change the ownership of the directory to `siddhi_user` using the following 
 
 `sudo chown siddhi_user:siddhi_io /home/siddhi_user/`{{execute}}
 
-### Install Siddhi operator
+### Install Siddhi Operator
 
-Deploy the necessary Siddhi operator prerequisite such as CRD, service accounts, roles, and role bindings using the following command.
+Deploy the necessary Siddhi Operator prerequisite such as CRD, service accounts, roles, and role bindings using the following command.
 
 `kubectl apply -f https://github.com/siddhi-io/siddhi-operator/releases/download/v0.2.0-m2/00-prereqs.yaml`{{execute}}
 
-Now deploy Siddhi operator using the below command.
+Now deploy Siddhi Operator using the below command.
 
 `kubectl apply -f https://github.com/siddhi-io/siddhi-operator/releases/download/v0.2.0-m2/01-siddhi-operator.yaml`{{execute}}
 
@@ -103,7 +107,7 @@ To ensure that all necessary pods and persistence volume are available in the cl
 
 `kubectl get pv`{{execute}}
 
-Results similar to the following will be generated, make sure the Siddhi operator, NATS operator, NATS Streaming operator, NATS pod and NATS Streaming pod are up and running, and also the created persistence volume is available. 
+Results similar to the following will be generated, make sure the Siddhi Operator, NATS Operator, NATS Streaming Operator, NATS pod and NATS Streaming pod are up and running, and also the created persistence volume is available. 
 
 ```sh
 $ kubectl get pods

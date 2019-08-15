@@ -24,7 +24,7 @@ from DevicePowerStream#window.time(1 min)
 select deviceType, sum(power) as powerConsumed
 group by deviceType
 having powerConsumed > 10000
-output every 30 sec
+output first every 30 sec
 insert into PowerSurgeAlertStream;
 ```
 
@@ -36,9 +36,9 @@ For more information in developing Siddhi Apps, refer the [Siddhi Documentation]
 
 **Prerequisites for deploying the app**
 
-- Ingress - As the App consumes events via HTTP, and Siddhi uses NGINX ingress controller to receive HTTP/HTTPS requests.
-- Persistence Volume - To preserve the periodic state snapshots of Siddhi. 
-- Siddhi Operator - For deploying and managing Siddhi Apps on Kubernetes.
+- **Ingress** - As the App consumes events via HTTP, and Siddhi uses NGINX ingress controller to receive HTTP/HTTPS requests.
+- **Persistence Volume** - To preserve the periodic state snapshots of Siddhi. 
+- **Siddhi Operator** - For deploying and managing Siddhi Apps on Kubernetes.
 
 The next section provides instructions on installing the prerequisites.
 

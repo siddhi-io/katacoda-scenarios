@@ -34,7 +34,7 @@ For more information in developing Siddhi Apps, refer the [Siddhi Documentation]
 
 **Prerequisites for deploying the app**
 
-- Ingress - As the App consumes events via HTTP, and Siddhi uses NGINX ingress controller to receive HTTP/HTTPS requests.
-- Siddhi Operator - For deploying and managing Siddhi Apps on Kubernetes.
+- **Ingress** - As the App consumes events via HTTP, and Siddhi uses NGINX ingress controller to receive HTTP/HTTPS requests.
+- **Siddhi Operator** - For deploying and managing Siddhi Apps on Kubernetes.
 
 The next section provides instructions on installing the prerequisites.
