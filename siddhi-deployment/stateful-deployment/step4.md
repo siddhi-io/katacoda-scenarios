@@ -16,9 +16,9 @@ Use the following cURL command to send multiple HTTP requests.
     }'
 `{{execute}}
 
-The deployed Siddhi App will log the messages once every 30 seconds if the total power consumed within the last 1 minute is greater than `10000`W.
-
 ### Viewing Logs 
+
+The deployed Siddhi App will log the messages once every 30 seconds if the total power consumed within the last 1 minute is greater than `10000`W.
 
 Following command can be used to view the logs from pod `power-consume-app-0`. 
 

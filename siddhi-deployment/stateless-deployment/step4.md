@@ -16,9 +16,9 @@ Use the following cURL command to send multiple HTTP requests.
         }'
 `{{execute}}
 
-The deployed Siddhi App will log the messages if the device type is `dryer` and power is greater than or equals to `600`W.
-
 ### Viewing Logs 
+
+The deployed Siddhi App will log the messages if the device type is `dryer` and power is greater than or equals to `600`W.
 
 Following command can be used to view the logs from pod `power-surge-app-0`. 
 

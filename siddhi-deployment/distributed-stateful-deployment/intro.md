@@ -1,1 +1,1 @@
-Welcome to your distributed stateful Siddhi app deployment scenario!
+Welcome to the distributed stateful Siddhi App deployment scenario!
