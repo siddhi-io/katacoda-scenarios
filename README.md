@@ -1,4 +1,5 @@
 # Katacoda Scenarios
+
 Interactive Katacoda scenarios for Siddhi Apps and Operator deployment on Kubernetes. 
 
 It contains the following deployment scenarios. 
@@ -8,7 +9,7 @@ It contains the following deployment scenarios.
 + Distributed stateful Siddhi App 
 + Distributed Stateful Siddhi App with existing NATS 
 
-[Try this in Katacoda.](https://www.katacoda.com/siddhi/courses/siddhi)
+[Try this in Katacoda](https://www.katacoda.com/siddhi/courses/siddhi).
 
 ## References
 

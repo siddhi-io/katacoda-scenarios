@@ -1,68 +1,34 @@
-Here we will deploy a stateful Siddhi app that we have discussed in the introduction section.
+This section provides instructions on deploying the stateful Siddhi App that was discussed in the Introduction section.
 
-A SiddhiProcess YAML to deploy the application can be retrieved as below.
+### Deploy Siddhi App
 
-`wget https://raw.githubusercontent.com/siddhi-io/siddhi-operator/v0.2.0-m2/deploy/examples/example-stateful-distributed-nats-app.yaml`{{execute}}
+Retrieve a prewritten SiddhiProcess YAML, with the earlier discussed `PowerConsumptionSurgeDetection` Siddhi App, using the following command.
 
-View the SiddhiProcess YAML as following.
+`wget https://raw.githubusercontent.com/siddhi-io/katacoda-scenarios/master/siddhi-deployment/distributed-stateful-nats-deployment/power-consume-app.yaml`{{execute}}
 
-`cat example-stateful-distributed-nats-app.yaml`{{execute}}
+Run the following command to view the SiddhiProcess YAML.
 
-This Siddhi application uses an HTTP source like below to receive events.
+`cat power-consume-app.yaml`{{execute}}
 
-```programming
-@source(
-    type='http',
-    receiver.url='${RECEIVER_URL}',
-    basic.auth.enabled='false',
-    @map(type='json')
-)
-define stream DevicePowerStream(deviceType string, power int);
-```
+Here the given Siddhi App is parametrized to retrieve the `RECEIVER_URL` from environment variables, and configured to be deployed using the docker image `siddhiio/siddhi-runner-ubuntu:5.1.0-m2`. 
 
-And print events using the log sink.
+As the App is stateful, to persist the periodic states, a persistent volume claim is configured under the `persistentVolume` section, and the relevant persistent configuration of the Siddhi runner is provided under the `runner` section.
 
-```programming
-@sink(type='log', prefix='LOGGER') 
-define stream PowerSurgeAlertStream(deviceType string, powerConsumed long);
-```
+Further, since the App is being deployed in a distributed mode, the `messagingSystem` section is configured to use NATS deployed at `nats://nats-siddhi:4222` and using the NATS Streaming cluster `stan-siddhi` to wire the partial Siddhi Apps.
 
-The execution logic of the Siddhi app defined by the following query.
+Deploy the Siddhi SiddhiProcess using the below command.
 
-```programming
-@info(name='surge-detector')
-from DevicePowerStream#window.time(1 min)
-select deviceType, sum(power) as powerConsumed
-group by deviceType
-having powerConsumed > 10000
-output every 30 sec
-insert into PowerSurgeAlertStream;
-```
+`kubectl apply -f power-consume-app.yaml`{{execute}}
 
-Above query executes the following tasks.
-1. Retains events arrived in last 1 minute period
-1. Group all the events by the electronic device type and calculate the total power consumption
-1. Select all the devices which exceed 1000W power consumption
-1. Output aggregated events once in each 30 seconds
+This SiddhiProcess will divide the Siddhi App into two partial Siddhi Apps and deploys them as two Kubernetes deployments, here one (`power-consume-app-0`) consumes the HTTP messages and inserts them into the NATS messaging system, and the other (`power-consume-app-1`) retrieves those events from the NATS messaging system, processes them in a stateful manner using a window, and logs the output. 
 
-The YAML file specifying the configurations of the messaging system that you created previously like below. From that, Siddhi operator parses NATS configurations to the partial Siddhi apps. Those partial Siddhi apps will individually connect to the NATS from those configurations.
+### Validate the deployment
 
-```yaml
-messagingSystem:
-  type: nats
-  config: 
-    bootstrapServers: 
-      - "nats://nats-siddhi:4222"
-    clusterID: stan-siddhi
-```
-
-Now you can deploy the Stateful Siddhi App.
-
-`kubectl apply -f example-stateful-distributed-nats-app.yaml`{{execute}}
-
-Validate the app is deployed correctly by running.
+Validate the deployment by running the following command.
 
 `kubectl get deploy`{{execute}}
+
+Results similar to the following will be generated, make sure the partial apps `power-consume-app-0` and `power-consume-app-1` are up and running. 
 
 ```sh
 $ kubectl get deploy
@@ -72,10 +38,13 @@ power-consume-app-1   1/1     1            1           5m
 siddhi-operator       1/1     1            1           10m
 ```
 
-**Note that** here Siddhi operator starts a parser deployment for Siddhi apps as `power-consume-app-parser`. It will automatically be removed by the operator. The actual deployments of the Siddhi app are `power-consume-app-0` and `power-consume-app-1`. You have to wait until `power-surge-app-0` and `power-consume-app-1` deployments up and running.
+**Note:** The Siddhi operator parses and validates Siddhi Apps before deploying them. This is done by temporarily deploying a parser with the SiddhiProcess name such as `power-consume-app-parser`, and removing it after parsing.
 
+The status of the `SiddhiProcess` can be viewed using the following commands.
 
-You can view the `SiddhiProcess` using the following commands.
+`kubectl get siddhi`{{execute}}
+
+The generate results will be similar to the following. 
 
 `kubectl get sp`{{execute}}
 
@@ -86,3 +55,4 @@ NAME                STATUS    READY     AGE
 power-consume-app   Running   2/2       5m
 ```
 
+The next section provides information on testing the stateful Siddhi App.

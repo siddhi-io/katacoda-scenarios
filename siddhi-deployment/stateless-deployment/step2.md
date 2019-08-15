@@ -1,6 +1,6 @@
 This section provides instructions to install the prerequisites needed for the stateless Siddhi App to run.
 
-### Enabling NGINX ingress
+### Enable NGINX ingress
 
 Siddhi operator by default uses NGINX ingress controller to receive HTTP/HTTPS requests. 
 Hence to [enable ingress](https://kubernetes.github.io/ingress-nginx/deploy/) in Minikube Kubernetes cluster run the following command.

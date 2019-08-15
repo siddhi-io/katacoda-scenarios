@@ -1,6 +1,6 @@
 This section provides instructions to install the prerequisites needed for the stateful Siddhi App to run.
 
-### Enabling NGINX ingress
+### Enable NGINX ingress
 
 Siddhi operator by default uses NGINX ingress controller to receive HTTP/HTTPS requests. 
 Hence to [enable ingress](https://kubernetes.github.io/ingress-nginx/deploy/) in Minikube Kubernetes cluster run the following command.
@@ -13,7 +13,7 @@ Therefore to allow Siddhi to consume events from outside, add an entry in the `/
 
 ``` echo " `minikube ip` siddhi" >> /etc/hosts ```{{execute}}
 
-## Setup Persistence Volume
+### Setup Persistence Volume
 
 Stateful Siddhi Apps need Kubernetes persistence volume to preserve their state. A sample persistence volume specification for Minikube can be download as follows.
 

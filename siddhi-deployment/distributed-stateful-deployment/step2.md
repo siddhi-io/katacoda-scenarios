@@ -1,6 +1,6 @@
 This section provides instructions to install the prerequisites needed for the distributed stateful Siddhi App to run.
 
-### Enabling NGINX ingress
+### Enable NGINX ingress
 
 Siddhi operator by default uses NGINX ingress controller to receive HTTP/HTTPS requests. 
 Hence to [enable ingress](https://kubernetes.github.io/ingress-nginx/deploy/) in Minikube Kubernetes cluster run the following command.
@@ -13,7 +13,7 @@ Therefore to allow Siddhi to consume events from outside, add an entry in the `/
 
 ``` echo " `minikube ip` siddhi" >> /etc/hosts ```{{execute}}
 
-## Deploy NATS and NATS Streaming
+### Deploy NATS and NATS Streaming
 
 In the distributed mode, as the Siddhi operator splits the Siddhi Apps into partial apps, it uses NATS and NATS Streaming systems for the apps to communicate with each other. 
 
@@ -27,7 +27,7 @@ Use the following commands to install the NATS and NATS streaming systems.
 
 `kubectl apply -f https://github.com/nats-io/nats-streaming-operator/releases/download/v0.2.2/deployment.yaml`{{execute}}
 
-## Setup Persistence Volume
+### Setup Persistence Volume
 
 Stateful Siddhi Apps need Kubernetes persistence volume to preserve their state. A sample persistence volume specification for Minikube can be download as follows.
 
@@ -63,7 +63,7 @@ Now deploy Siddhi operator using the below command.
 
 `kubectl apply -f https://github.com/siddhi-io/siddhi-operator/releases/download/v0.2.0-m2/01-siddhi-operator.yaml`{{execute}}
 
-## Validate the Environment
+### Validate the Environment
 
 To ensure that all necessary pods and persistence volume are available in the cluster, execute the following commands.
 
@@ -82,7 +82,7 @@ siddhi-operator-6698d8f69d-w2kvj           1/1       Running   0          10m
 
 $ kubectl get pv
 NAME        CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM     STORAGECLASS   REASON    AGE
-siddhi-pv   1Gi        RWO            Recycle          Available             standard                 2m
+siddhi-pv   1Gi        RWO            Recycle          Available             standard                 10m
 ```
 
 The next section provides information on deploying a stateful Siddhi App in the distributed mode.

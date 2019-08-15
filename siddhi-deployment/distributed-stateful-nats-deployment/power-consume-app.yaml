@@ -1,0 +1,62 @@
+apiVersion: siddhi.io/v1alpha2
+kind: SiddhiProcess
+metadata: 
+  name: power-consume-app
+spec: 
+  apps: 
+    - script: |
+        @App:name("PowerConsumptionSurgeDetection")
+        @App:description("Consumes HTTP messages in JSON format, and alerts by logging a message once every 30 seconds, if the total power consumption in the last 1 minute is greater than or equal to 10000W.")
+
+        -- Input Message Format : { 'deviceType': 'dryer', 'power': 6000 }
+
+        @source(
+          type='http',
+          receiver.url='${RECEIVER_URL}',
+          basic.auth.enabled='false',
+          @map(type='json')
+        )
+        define stream DevicePowerStream(deviceType string, power int);
+
+        @sink(type='log', prefix='LOGGER') 
+        define stream PowerSurgeAlertStream(deviceType string, powerConsumed long); 
+
+        @info(name='surge-detector')  
+        from DevicePowerStream#window.time(1 min) 
+        select deviceType, sum(power) as powerConsumed
+        group by deviceType
+        having powerConsumed > 10000
+        output every 30 sec
+        insert into PowerSurgeAlertStream;
+
+  container: 
+    env: 
+      - 
+        name: RECEIVER_URL
+        value: "http://0.0.0.0:8080/checkPower"
+    image: "siddhiio/siddhi-runner-ubuntu:5.1.0-m2"
+  
+  messagingSystem:
+    type: nats
+    config: 
+      bootstrapServers: 
+        - "nats://nats-siddhi:4222"
+      clusterId: stan-siddhi
+  
+  persistentVolume: 
+    accessModes: 
+      - ReadWriteOnce
+    resources: 
+      requests: 
+        storage: 1Gi
+    storageClassName: standard
+    volumeMode: Filesystem
+  
+  runner: |
+    state.persistence:
+      enabled: true
+      intervalInMin: 1
+      revisionsToKeep: 2
+      persistenceStore: io.siddhi.distribution.core.persistence.FileSystemPersistenceStore
+      config:
+        location: siddhi-app-persistence

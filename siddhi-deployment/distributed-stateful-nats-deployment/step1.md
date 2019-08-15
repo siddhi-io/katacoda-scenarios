@@ -1,22 +1,26 @@
-[Siddhi](http://siddhi.io) is a cloud-native, scalable, Streaming and Complex Event Processing System capable of building real-time applications.
+[Siddhi](http://siddhi.io) is a cloud-native, scalable, Streaming and Complex Event Processing System capable of building real-time analytics, data integration, notification and surveillance usecases.
 
-In this scenario, we will see how we can deploy a Siddhi application that runs distributed with high availability preserving its internal states. Here we will demonstrate how to use an external user-defined NATS messaging system to connect all partial Siddhi apps.
-We will be deploying the following `PowerConsumptionSurgeDetection` app.
+This scenario presents how to deploy a distributed stateful Siddhi Application on Kubernetes providing high availability with preconfigured NATS. 
 
-```programming
+This use case is implemented using the `PowerConsumptionSurgeDetection` app presented below.
+
+```sql
 @App:name("PowerConsumptionSurgeDetection")
+@App:description("Consumes HTTP messages in JSON format, and alerts by logging a message once every 30 seconds, if the total power consumption in the last 1 minute is greater than or equal to 10000W.")
 
-@App:description("Consumes power consumption events from HTTP on JSON format `{ 'deviceType': 'dryer', 'power': 6000 }`, and alerts the user if the power consumption in last 1 minute is greater than or equal to 10000W by logging a message once every 30 seconds.")
+@source( type='http', 
+         receiver.url='${RECEIVER_URL}',
+         basic.auth.enabled='false', 
+         @map(type='json'))
+define stream DevicePowerStream(
+              deviceType string, power int);
 
-@source(type='http', receiver.url='${RECEIVER_URL}',
-  basic.auth.enabled='false', @map(type='json'))
-define stream DevicePowerStream(deviceType string, power int);
-
-@sink(type='log', prefix='LOGGER') 
-define stream PowerSurgeAlertStream(deviceType string, powerConsumed long);
+@sink(type='log', prefix='LOGGER')  
+define stream PowerSurgeAlertStream(
+              deviceType string, power int);
 
 @info(name='surge-detector')  
-from DevicePowerStream#window.time(1 min)
+from DevicePowerStream#window.time(1 min) 
 select deviceType, sum(power) as powerConsumed
 group by deviceType
 having powerConsumed > 10000
@@ -24,16 +28,18 @@ output every 30 sec
 insert into PowerSurgeAlertStream;
 ```
 
-The above query consumes events from `HTTP` as a `JSON` message of `{ 'deviceType': 'dryer', 'power': 6000 }` format, and inserts the events into `DevicePowerStream`. From which using the query `surge-detector`, it generates an event once every 30 seconds and inserts into the `PowerSurgeAlertStream`, if the total power consumption in the last 1 minute is greater than or equal to 10000W. The events pushed to the `PowerSurgeAlertStream` will be then logged to the console.
+The above app consumes `JSON` messages via http sink in the format `{ 'deviceType': 'dryer', 'power': 6000 }`, and inserts them into `DevicePowerStream` stream. From which the `surge-detector` query calculates the total power consumed in the last 1 minute, and if the total value is greater than or equal to `10000`W, it generates an event once every 30 seconds, and inserts into the `PowerSurgeAlertStream` stream. The `PowerSurgeAlertStream` then logs them on the console using a log sink.
 
-This app is stateful because it needs to preserve the running sum of power consumption even during failures and restarts.
+This app is stateful as it has a window of 1 minute and it needs to preserve the running sum of power consumption during failures and restarts.
 
-Prerequisites on deploying this app:
+For more information in developing Siddhi Apps, refer the [Siddhi Documentation](http://siddhi.io/redirect/docs).
 
-- NATS - For internal messaging between distributed Siddhi Apps.
-- NATS Streaming - To preserve messages for reply upon failure.
-- Ingress - As Siddhi uses NGINX ingress controller to receive HTTP/HTTPS requests.
-- Persistence Volume - To preserve the periodic snapshots produced by Siddhi 
-- Siddhi Operator - For deploying and managing distributed Siddhi Apps.
+**Prerequisites for deploying the app**
 
-The following section explains how we can install the prerequisites.
+- NATS - As an internal messaging layer allowing the distributed Siddhi Apps to communicate with each other.
+- NATS Streaming - To preserve the messages for reply upon failure.
+- Ingress - As the App consumes events via HTTP, and Siddhi uses NGINX ingress controller to receive HTTP/HTTPS requests.
+- Persistence Volume - To preserve the periodic state snapshots of Siddhi. 
+- Siddhi Operator - For deploying and managing Siddhi Apps on Kubernetes.
+
+The next section provides instructions on installing the prerequisites.

@@ -1,1 +1,1 @@
-You've completed your stateful Siddhi app deployment in distributed mode with NATS successfully!
+**Congratulations on successfully completing the distributed stateful Siddhi App deployment with existing NATS scenario!**

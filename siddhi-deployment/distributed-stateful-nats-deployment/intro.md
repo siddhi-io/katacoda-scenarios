@@ -1,1 +1,1 @@
-Welcome to your stateful Siddhi app deployment scenario!
+Welcome to the distributed stateful Siddhi App deployment with existing NATS scenario!
