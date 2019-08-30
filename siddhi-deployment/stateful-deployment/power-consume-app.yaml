@@ -36,7 +36,7 @@ spec:
         value: "http://0.0.0.0:8080/checkPower"
     image: "siddhiio/siddhi-runner-ubuntu:5.1.0-alpha"
   
-  persistentVolume: 
+  persistentVolumeClaim: 
     accessModes: 
       - ReadWriteOnce
     resources: 
