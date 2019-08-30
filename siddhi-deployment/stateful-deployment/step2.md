@@ -17,7 +17,7 @@ Therefore to allow Siddhi to consume events from outside, add an entry in the `/
 
 Stateful Siddhi Apps need Kubernetes persistence volume to preserve their state. A sample persistence volume specification for Minikube can be download as follows.
 
-`wget https://raw.githubusercontent.com/siddhi-io/siddhi-operator/v0.2.0-m2/deploy/examples/example-pv.yaml`{{execute}}
+`wget https://raw.githubusercontent.com/siddhi-io/siddhi-operator/v0.2.0-alpha/deploy/examples/example-pv.yaml`{{execute}}
 
 Run the following command to view the persistence volume YAML file.
 
@@ -43,11 +43,11 @@ Now, change the ownership of the directory to `siddhi_user` using the following 
 
 Deploy the necessary Siddhi Operator prerequisite such as CRD, service accounts, roles, and role bindings using the following command.
 
-`kubectl apply -f https://github.com/siddhi-io/siddhi-operator/releases/download/v0.2.0-m2/00-prereqs.yaml`{{execute}}
+`kubectl apply -f https://github.com/siddhi-io/siddhi-operator/releases/download/v0.2.0-alpha/00-prereqs.yaml`{{execute}}
 
 Now deploy Siddhi Operator using the below command.
 
-`kubectl apply -f https://github.com/siddhi-io/siddhi-operator/releases/download/v0.2.0-m2/01-siddhi-operator.yaml`{{execute}}
+`kubectl apply -f https://github.com/siddhi-io/siddhi-operator/releases/download/v0.2.0-alpha/01-siddhi-operator.yaml`{{execute}}
 
 ### Validate the environment
 
