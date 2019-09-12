@@ -10,7 +10,7 @@ Run the following command to view the SiddhiProcess YAML.
 
 `cat power-surge-app.yaml`{{execute}}
 
-Here the given Siddhi App is parametrized to retrieve the `RECEIVER_URL` from environment variables, and configured to be deployed using the docker image `siddhiio/siddhi-runner-ubuntu:5.1.0-alpha`.
+Here the given Siddhi App is parametrized to retrieve the `RECEIVER_URL` from environment variables, and configured to be deployed using the docker image `siddhiio/siddhi-runner-ubuntu:5.1.0-beta`.
 
 Deploy the Siddhi SiddhiProcess using the below command.
 
