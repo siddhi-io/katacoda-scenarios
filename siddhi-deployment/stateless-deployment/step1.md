@@ -37,4 +37,10 @@ For more information in developing Siddhi Apps, refer the [Siddhi Documentation]
 - **Ingress** - As the App consumes events via HTTP, and Siddhi uses NGINX ingress controller to receive HTTP/HTTPS requests.
 - **Siddhi Operator** - For deploying and managing Siddhi Apps on Kubernetes.
 
+The architecture of the final SiddhiProcess deployment of this scenario can be illustrated using the following diagram. 
+
+![Architecture Diagram](../../assets/architectures/stateless-deployment.png "Architecture Diagram")
+
+Users can send HTTP/HTTPS requests to the deployed Siddhi app through NGINX ingress controller. The Siddhi app will consume all those requests and process it.
+
 The next section provides instructions on installing the prerequisites.
