@@ -40,5 +40,11 @@ For more information in developing Siddhi Apps, refer the [Siddhi Documentation]
 - **Persistence Volume** - To preserve the periodic state snapshots of Siddhi. 
 - **Siddhi Operator** - For deploying and managing Siddhi Apps on Kubernetes.
 
+The architecture of the final SiddhiProcess deployment of this scenario can be illustrated using the following diagram.
+
+![Architecture Diagram](../../assets/architectures/stateful-deployment.png "Architecture Diagram")
+
+Users can send HTTP/HTTPS requests to the deployed Siddhi app through NGINX ingress controller. The Siddhi app will consume all those requests and process it. Further, the deployed Siddhi app will persist the current status as a snapshot to the persistent volume created in the Kubernetes cluster.
+
 The next section provides instructions on installing the prerequisites.
 
