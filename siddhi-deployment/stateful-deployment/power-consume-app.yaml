@@ -34,7 +34,7 @@ spec:
       - 
         name: RECEIVER_URL
         value: "http://0.0.0.0:8080/checkPower"
-    image: "siddhiio/siddhi-runner-ubuntu:5.1.0-beta"
+    image: "siddhiio/siddhi-runner-ubuntu:5.1.0"
   
   persistentVolumeClaim: 
     accessModes: 
