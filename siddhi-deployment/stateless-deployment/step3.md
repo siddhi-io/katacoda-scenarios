@@ -18,32 +18,19 @@ Deploy the Siddhi SiddhiProcess using the below command.
 
 ### Validate the deployment
 
-Validate the deployment by running the following command.
-
-`kubectl get deploy`{{execute}}
-
-Results similar to the following will be generated, make sure the `power-surge-app-0` is up and running. 
-
-```sh
-$ kubectl get deploy
-NAME                READY   UP-TO-DATE   AVAILABLE   AGE
-power-surge-app-0   1/1     1            1           2m
-siddhi-operator     1/1     1            1           5m
-```
-
-**Note:** The Siddhi Operator parses and validates Siddhi Apps before deploying them. This is done by temporarily deploying a parser with the SiddhiProcess name such as `power-surge-app-parser`, and removing it after parsing.
-
 The status of the `SiddhiProcess` can be viewed using the following commands.
 
 `kubectl get siddhi`{{execute}}
 
-The generate results will be similar to the following. 
+The generated results will be similar to the following. Make sure the `power-surge-app` is in the `Ready` state. The `Ready` state is the indication that the Siddhi app is deployed correctly and ready to consume external requests.
 
 ```sh
 $ kubectl get siddhi
 
 NAME              STATUS    READY    AGE
-power-surge-app   Running   1/1      5m
+power-surge-app   Ready     1/1      5m
 ```
+
+**Note:** The Siddhi Operator parses and validates Siddhi Apps before deploying them. This is done by temporarily deploying a parser with the SiddhiProcess name such as `power-surge-app-parser`, and removing it after parsing.
 
 The next section provides information on testing the stateless Siddhi App.
