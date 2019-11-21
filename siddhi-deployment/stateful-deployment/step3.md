@@ -10,7 +10,7 @@ Run the following command to view the SiddhiProcess YAML.
 
 `cat power-consume-app.yaml`{{execute}}
 
-Here the given Siddhi App is parametrized to retrieve the `RECEIVER_URL` from environment variables, and configured to be deployed using the docker image `siddhiio/siddhi-runner-ubuntu:5.1.0`. 
+Here the given Siddhi App is parametrized to retrieve the `RECEIVER_URL` from environment variables, and configured to be deployed using the docker image `siddhiio/siddhi-runner-ubuntu:5.1.1`. 
 
 Further, to persist the periodic states produced by Siddhi, a persistent volume claim is configured under the `persistentVolume` section, and the relevant persistent configuration of the Siddhi runner is provided under the `runner` section.
 
