@@ -33,7 +33,7 @@ For this scenario, a single node NATS cluster will be used.
  
 Download the YAML to create a NATS cluster as follows.
 
-`wget https://raw.githubusercontent.com/siddhi-io/siddhi-operator/v0.2.0/deploy/examples/example-nats-cluster.yaml`{{execute}}
+`wget https://raw.githubusercontent.com/siddhi-io/siddhi-operator/v0.2.1/deploy/examples/example-nats-cluster.yaml`{{execute}}
 
 The NATS Cluster configurations can be viewed using the below command.
 
@@ -51,7 +51,7 @@ Similar to NATS, a single node NATS Streaming cluster will be used for this scen
 
 Download the YAML to create a NATS Streaming cluster with the below command.
 
-`wget https://raw.githubusercontent.com/siddhi-io/siddhi-operator/v0.2.0/deploy/examples/example-stan-cluster.yaml`{{execute}}
+`wget https://raw.githubusercontent.com/siddhi-io/siddhi-operator/v0.2.1/deploy/examples/example-stan-cluster.yaml`{{execute}}
 
 The NATS Streaming cluster configurations can be viewed using the below command.
 
@@ -67,7 +67,7 @@ Deploy the NATS Streaming cluster by running the following command.
 
 Stateful Siddhi Apps need Kubernetes persistence volume to preserve their state. A sample persistence volume specification for Minikube can be download as follows.
 
-`wget https://raw.githubusercontent.com/siddhi-io/siddhi-operator/v0.2.0/deploy/examples/example-pv.yaml`{{execute}}
+`wget https://raw.githubusercontent.com/siddhi-io/siddhi-operator/v0.2.1/deploy/examples/example-pv.yaml`{{execute}}
 
 Run the following command to view the persistence volume YAML file.
 
@@ -93,11 +93,11 @@ Now, change the ownership of the directory to `siddhi_user` using the following 
 
 Deploy the necessary Siddhi Operator prerequisite such as CRD, service accounts, roles, and role bindings using the following command.
 
-`kubectl apply -f https://github.com/siddhi-io/siddhi-operator/releases/download/v0.2.0/00-prereqs.yaml`{{execute}}
+`kubectl apply -f https://github.com/siddhi-io/siddhi-operator/releases/download/v0.2.1/00-prereqs.yaml`{{execute}}
 
 Now deploy Siddhi Operator using the below command.
 
-`kubectl apply -f https://github.com/siddhi-io/siddhi-operator/releases/download/v0.2.0/01-siddhi-operator.yaml`{{execute}}
+`kubectl apply -f https://github.com/siddhi-io/siddhi-operator/releases/download/v0.2.1/01-siddhi-operator.yaml`{{execute}}
 
 ### Validate the Environment
 

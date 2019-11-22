@@ -10,7 +10,7 @@ Run the following command to view the SiddhiProcess YAML.
 
 `cat power-consume-app.yaml`{{execute}}
 
-Here the given Siddhi App is parametrized to retrieve the `RECEIVER_URL` from environment variables, and configured to be deployed using the docker image `siddhiio/siddhi-runner-ubuntu:5.1.0`. 
+Here the given Siddhi App is parametrized to retrieve the `RECEIVER_URL` from environment variables, and configured to be deployed using the docker image `siddhiio/siddhi-runner-ubuntu:5.1.1`. 
 
 As the App is stateful, to persist the periodic states, a persistent volume claim is configured under the `persistentVolume` section, and the relevant persistent configuration of the Siddhi runner is provided under the `runner` section.
 
@@ -40,7 +40,7 @@ siddhi-operator       1/1     1            1           10m
 
 **Note:** The Siddhi Operator parses and validates Siddhi Apps before deploying them. This is done by temporarily deploying a parser with the SiddhiProcess name such as `power-consume-app-parser`, and removing it after parsing.
 
-The status of the `SiddhiProcess` can be viewed using the following commands.
+The status of the `SiddhiProcess` can be viewed using the following commands. The status of the `SiddhiProcess` can be viewed using the following commands. Make sure the `power-consume-app` is in the `Ready` state. The `Ready` state is the indication that the Siddhi app is deployed correctly and ready to consume external requests. The `READY` spec shows the out from all deployments, how many deployments are ready to consume events.
 
 `kubectl get siddhi`{{execute}}
 
@@ -50,7 +50,7 @@ The generate results will be similar to the following.
 $ kubectl get siddhi
 
 NAME                STATUS    READY     AGE
-power-consume-app   Running   2/2       5m
+power-consume-app   Ready     2/2       5m
 ```
 
 The next section provides information on testing the stateful Siddhi App.
