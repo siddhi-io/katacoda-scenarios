@@ -1,0 +1,17 @@
+{
+  "scenarios": [
+    {
+      "title": "Siddhi Editor Playground",
+      "description": "Trying out Siddhi Editor",
+      "id": "siddhi-editor"
+    }
+  ],
+  "courses": [
+    {
+      "title": "Siddhi Deployment Tutorials",
+      "description": "This course contains series of tutorials about deploying Siddhi on Kubernetes",
+      "id": "siddhi-deployment"
+    }
+  ]
+}
+  

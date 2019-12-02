@@ -1,0 +1,42 @@
+{
+  "title": "Siddhi Editor (Vanilla)",
+  "description": "Try out Siddhi Editor",
+  "difficulty": "Beginner",
+  "time": "10 minutes",
+  "details": {
+    "steps": [
+      {
+        "text": "step1.md"
+      }
+    ],
+    "intro": {
+      "text": "intro.md",
+      "code": "foreground.sh",
+      "credits": ""
+    },
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "environment": {
+    "hideintro": true,
+    "hidefinish": true,
+    "uilayout": "terminal",
+    "showdashboard": true,
+    "dashboards": [
+      {
+        "name": "Siddhi Editor",
+        "href": "http://[[HOST_SUBDOMAIN]]-9390-[[KATACODA_HOST]].environments.katacoda.com/editor"
+      }
+    ],
+    "terminals": [
+      {
+        "name": "Extra Terminal",
+        "target": "host01"
+      }
+    ]
+  },
+  "backend": {
+    "imageid": "ubuntu"
+  }
+}
