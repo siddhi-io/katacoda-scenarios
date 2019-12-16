@@ -1,11 +1,11 @@
 
 Siddhi Editor is automatically downloaded and started in the "Terminal". 
 
-__Note:__ It might take up to a minute for Siddhi Editor to load in the browser.
+__Note:__ Please wait, this may take a few seconds.
 
 #### Accessing The Editor 
 
-When you see log "__Siddhi Tooling Distribution started in xxxx sec__" access the Siddhi Editor by clicking the "Siddhi Editor" Tab or via the following URL
+When you see log "__Siddhi Tooling Distribution started in xxxx sec__" access the Siddhi Editor by clicking the "Siddhi Editor" Tab or via the following URL:
 
 http://[[HOST_SUBDOMAIN]]-9390-[[KATACODA_HOST]].environments.katacoda.com/editor
 
