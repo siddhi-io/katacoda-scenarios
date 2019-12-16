@@ -2,7 +2,7 @@
   "scenarios": [
     {
       "title": "Siddhi Editor Playground",
-      "description": "Trying out Siddhi Editor",
+      "description": "For trying out Siddhi Editor",
       "id": "siddhi-editor"
     }
   ],
