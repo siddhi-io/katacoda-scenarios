@@ -18,9 +18,9 @@ Use the following cURL command to send multiple HTTP requests.
 
 ### Viewing Logs 
 
-The app logs messages if the device type is `dryer` and power is >= `600`W.
+The app logs messages if the device type is `dryer` and power is greater than or equal `600`W.
 
-Following command to view the logs from pod `power-surge-app-0`. 
+Run the following command to view the logs from pod `power-surge-app-0`. 
 
 `kubectl logs $(kubectl get pods | awk '{ print $1 }' | grep ^power-surge-app-0) | tail -n 10`{{execute}}
 

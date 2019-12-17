@@ -33,6 +33,6 @@ power-surge-app   Ready     1/1      5m
 
 Make sure the `power-surge-app` is in `Ready` state. Here, the `Ready` state indicates that the Siddhi App is deployed correctly and ready to consume external requests.
 
-**Note:** The Siddhi Operator parses and validates Siddhi Apps before deploying them. This is done by temporarily deploying a parser with the SiddhiProcess name such as `power-surge-app-parser`, and it will be removed after parsing.
+**Note:** The Siddhi Operator parses and validates Siddhi Apps before deploying them. This is done by temporarily deploying a parser with the SiddhiProcess name such as `power-surge-app-parser`, and removing after parsing.
 
 The next section provides information on testing the stateless Siddhi App.

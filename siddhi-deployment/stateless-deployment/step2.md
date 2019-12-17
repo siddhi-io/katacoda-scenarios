@@ -14,13 +14,13 @@ Add the following entry to the `/etc/hosts` file, mapping `minikube ip` to `sidd
 
 ### Install Siddhi Operator
 
-Deploy the necessary Siddhi Operator prerequisite such as CRD, service accounts, roles, and role bindings as follows.
+Apply the necessary Siddhi Operator prerequisite such as CRD, service accounts, roles, and role bindings as follows.
 
-`kubectl apply -f https://github.com/siddhi-io/siddhi-operator/releases/download/v0.2.1/00-prereqs.yaml`{{execute}}
+`kubectl apply -f https://github.com/siddhi-io/siddhi-operator/releases/download/v0.2.2/00-prereqs.yaml`{{execute}}
 
-Deploy Siddhi Operator using the below command.
+Apply Siddhi Operator using the below command.
 
-`kubectl apply -f https://github.com/siddhi-io/siddhi-operator/releases/download/v0.2.1/01-siddhi-operator.yaml`{{execute}}
+`kubectl apply -f https://github.com/siddhi-io/siddhi-operator/releases/download/v0.2.2/01-siddhi-operator.yaml`{{execute}}
 
 ### Validate the environment
 

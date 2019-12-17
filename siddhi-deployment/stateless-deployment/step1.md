@@ -4,7 +4,7 @@ This scenario is implemented using the `PowerSurgeDetection` app presented below
 
 ```sql
 @App:name("PowerSurgeDetection")
-@App:description("Consumes HTTP messages in JSON format and logs them, if the device type is 'dryer', and the power level is >= 600W.")
+@App:description("Consumes HTTP messages in JSON format and logs them, if the device type is 'dryer', and the power level is greater than or equal 600W.")
 
 @source( type='http', 
          receiver.url='${RECEIVER_URL}',
@@ -34,7 +34,7 @@ For more information in developing Siddhi Apps, refer the [Siddhi Documentation]
 
 **Prerequisites for deploying the app**
 
-- **Ingress** - As the app consumes events via HTTP, and Siddhi uses NGINX ingress controller to receive HTTP/HTTPS requests.
+- **Ingress** - To receive HTTP/HTTPS requests into Siddhi Apps running on Kubernetes
 - **Siddhi Operator** - For deploying and managing Siddhi Apps on Kubernetes.
 
 **Deployment Architecture**

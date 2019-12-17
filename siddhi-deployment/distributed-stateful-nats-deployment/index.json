@@ -1,6 +1,6 @@
 {
   "title": "Distributed stateful Siddhi App with existing NATS",
-  "description": "Deploy a stateful Siddhi Application in distributed mode on Kubernetes with preconfigured NATS.",
+  "description": "Deploy and run a stateful Siddhi App in distributed mode on Kubernetes with preconfigured NATS.",
   "difficulty": "beginner",
   "time": "15 minutes",
   "details": {
