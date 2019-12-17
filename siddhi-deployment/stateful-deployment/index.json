@@ -1,6 +1,6 @@
 {
   "title": "Stateful Siddhi App",
-  "description": "Deploy a stateful Siddhi Application on Kubernetes.",
+  "description": "Deploy and run a stateful Siddhi Application on Kubernetes.",
   "difficulty": "beginner",
   "time": "10 minutes",
   "details": {
