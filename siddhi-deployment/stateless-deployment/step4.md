@@ -18,13 +18,13 @@ Use the following cURL command to send multiple HTTP requests.
 
 ### Viewing Logs 
 
-The deployed Siddhi App will log the messages if the device type is `dryer` and power is greater than or equals to `600`W.
+The app logs messages if the device type is `dryer` and power is >= `600`W.
 
-Following command can be used to view the logs from pod `power-surge-app-0`. 
+Following command to view the logs from pod `power-surge-app-0`. 
 
 `kubectl logs $(kubectl get pods | awk '{ print $1 }' | grep ^power-surge-app-0) | tail -n 10`{{execute}}
 
-The processed events will be logged similar to the following log segment.
+The filtered events will be logged similar to the following log segment.
 
 ```
 ...

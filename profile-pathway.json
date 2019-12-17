@@ -9,7 +9,7 @@
   "courses": [
     {
       "title": "Siddhi Deployment Tutorials",
-      "description": "This course contains series of tutorials about deploying Siddhi on Kubernetes",
+      "description": "Course contains series of tutorials about deploying Siddhi on Kubernetes",
       "id": "siddhi-deployment"
     }
   ]
