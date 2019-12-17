@@ -30,7 +30,7 @@ insert into PowerSurgeAlertStream;
 
 The above app consumes `JSON` messages via http sink in the format `{ 'deviceType': 'dryer', 'power': 6000 }`, and inserts them into `DevicePowerStream` stream. From which the `surge-detector` query calculates the total power consumed in the last 1 minute, and if the total value is greater than or equal to `10000`W, it generates an event once every 30 seconds, and inserts into the `PowerSurgeAlertStream` stream. The `PowerSurgeAlertStream` then logs them on the console using a log sink.
 
-This app is stateful as it has a window of 1 minute, and running sum of power consumption, which it needs to be preserved during failures and restarts.
+This app is stateful as it has a window of 1 minute, and running sum of power consumption, which it needs to preserve during failures and restarts.
 
 For more information in developing Siddhi Apps, refer the [Siddhi Documentation](http://siddhi.io/redirect/docs).
 
