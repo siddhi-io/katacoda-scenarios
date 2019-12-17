@@ -35,7 +35,7 @@ power-consume-app    Ready     1/1      5m
 
 Make sure the `power-consume-app` is in the `Ready` state. The `Ready` state is the indication that the Siddhi app is deployed correctly and ready to consume external requests.
 
-**Note:** The Siddhi Operator parses and validates Siddhi Apps before deploying them. This is done by temporarily deploying a parser with the SiddhiProcess name such as `power-consume-app-parser`, and removing after parsing.
+**Note:** The Siddhi Operator parses and validates Siddhi Apps before deploying them. This is done by temporarily deploying a parser with a name `power-consume-app-parser`, and removing after parsing.
 
 The next section provides information on testing the stateful Siddhi App.
 

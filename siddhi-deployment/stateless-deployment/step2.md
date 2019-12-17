@@ -3,7 +3,7 @@ This section provides instructions to install the prerequisites needed for the s
 ### Enable NGINX ingress
 
 Siddhi Operator by default uses NGINX ingress controller to receive HTTP/HTTPS requests. 
-Hence to [enable ingress](https://kubernetes.github.io/ingress-nginx/deploy/) in this Minikube Kubernetes cluster run the following command.
+Hence, [enable ingress](https://kubernetes.github.io/ingress-nginx/deploy/) in this Minikube Kubernetes cluster by running the following command.
 
 `minikube addons enable ingress`{{execute}}
 
