@@ -16,9 +16,9 @@ Add the following entry to the `/etc/hosts` file, mapping `minikube ip` to `sidd
 
 In the distributed mode, as the Siddhi Operator splits the Siddhi Apps into partial apps, and uses NATS and NATS Streaming systems to connect each other, install the NATS and NATS Streaming Operators using the following commands,
 
-`kubectl apply -f https://github.com/nats-io/nats-operator/releases/download/v0.5.0/00-prereqs.yaml`{{execute}}
+`kubectl apply -f https://github.com/nats-io/nats-operator/releases/download/v0.6.0/00-prereqs.yaml`{{execute}}
 
-`kubectl apply -f https://github.com/nats-io/nats-operator/releases/download/v0.5.0/10-deployment.yaml`{{execute}}
+`kubectl apply -f https://github.com/nats-io/nats-operator/releases/download/v0.6.0/10-deployment.yaml`{{execute}}
 
 `kubectl apply -f https://github.com/nats-io/nats-streaming-operator/releases/download/v0.2.2/default-rbac.yaml`{{execute}}
 
