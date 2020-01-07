@@ -20,9 +20,9 @@ In the distributed mode, as the Siddhi Operator splits the Siddhi Apps into part
 
 `kubectl apply -f https://github.com/nats-io/nats-operator/releases/download/v0.6.0/10-deployment.yaml`{{execute}}
 
-`kubectl apply -f https://github.com/nats-io/nats-streaming-operator/releases/download/v0.2.2/default-rbac.yaml`{{execute}}
+`kubectl apply -f https://github.com/nats-io/nats-streaming-operator/releases/download/v0.3.0/default-rbac.yaml`{{execute}}
 
-`kubectl apply -f https://github.com/nats-io/nats-streaming-operator/releases/download/v0.2.2/deployment.yaml`{{execute}}
+`kubectl apply -f https://github.com/nats-io/nats-streaming-operator/releases/download/v0.3.0/deployment.yaml`{{execute}}
 
 ### Create NATS Cluster
 
